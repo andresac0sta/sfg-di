@@ -1,0 +1,39 @@
+The spring context is all the stuff that is going to be around your application
+When spring starts up you might have annotated dependencies, configuration files
+all is going to be included in the context
+
+When spring get a request for a controller asking for a component what happens is
+that it is going to go out to the context and see if it can find an instance of that
+component or construct it at that time.
+
+Remember is not just your code that is executing you have this context that spring
+is going to be managing components as it finds components, spring beans, those objects
+are going to get constructed and become available in the context. What this means
+is that we can ask the context for a reference to that object.
+
+After creating the simple controller Mycontroller.java go to the SfgDiApplication.jav class and create
+a handle for the context
+
+    ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+The method SpringApplication.run() returns an ApplicationContext.
+
+Now you can ask that context for an instance of MyController
+
+    MyController myController = (MyController) ctx.getBean("myController");
+
+you need a typecast because ctx.getBean("myController") returns an object type.
+
+By default, when spring creates beans the string name of the bean is going to be the class name but
+beginning with a lower case letter.
+
+     Java class name:
+        MyController.java
+     bean name:
+        myController
+
+Now you can access sayHello() the method in the controller.
+
+    String greeting = myController.sayHello();
+
+Notice we never used the new keyword spring took care of that behind the scenes.
