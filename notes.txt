@@ -1,0 +1,32 @@
+use qualifiers to inject a specific greeting service
+once you use @Qualifier spring will know which one of this controllers get which instance of the service.
+
+In this case there are 3 implementations of the GreetingService
+--ConstructorGreetingService
+--SetterInjectedGreetingService
+--PropertyInjectedGreetingService
+
+To specify which service implementaion you want use the @Qualifier annotation.
+
+In the constructor controller ConstructorInjectedController.java
+
+ public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+notice the use of @Qualifier("constructorGreetingService")
+
+In the setter controller SetterInjectedController.java
+
+    @Qualifier("setterInjectedGreetingService")
+    @Autowired
+    public void setGreetingService(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+notice the use of @Qualifier("setterInjectedGreetingService")
+
+At the property level
+    @Qualifier("propertyInjectedGreetingService")
+    @Autowired
+    public GreetingService greetingService;
