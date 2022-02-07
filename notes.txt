@@ -1,0 +1,16 @@
+In this module we are implementing dependency injection
+Spring will instantiate the objects and inject them.
+Create an interface and implementation of GreetingService
+
+Annotate the GreetingServiceImpl.java with
+    @Service
+this will tell spring this is a service added to the context.
+
+There are 3 ways of doing dependency injection with spring
+
+--Constructor injection ( THE BEST WAY).
+--Setter injection(2nd best way).
+--Property injection (NOT RECOMMENDED).
+
+In  each case you will need to use the  @Autowired annotation
+at the constructor, setter, or property.
