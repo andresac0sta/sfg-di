@@ -1,0 +1,18 @@
+Spring frame has a default profile and is considered active if no active
+profile has been set.
+
+We can annotate beans for the default profile if there there is no active
+profile set.
+
+By having a default profile we don't have to always specify an active profile.
+
+Let's set the spanish profile as our default profile in I18NSpanishService.java
+if there are no other profiles.
+
+    @Profile({"ES", "default"})
+
+Now comment out in the resources/applications.properties file
+    #spring.profiles.active=EN
+if you run the application the default profile will be use
+if you set the spring.profiles.active=EN   to EN the English
+profile will be used.
