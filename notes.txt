@@ -1,0 +1,35 @@
+profiles allow you to have beans in your configuration that will take on
+different characteristics like data sources.
+By default, when you have an H2 in memory database on your class path
+spring boot automatically configures that but what if you wanted to have
+mySQL capabilities as well.
+You might want to run a profile for mySQL that way you can use
+H2 in your development environment and in your production environment you are
+using mySQL, but you are controlling the mySQL specific beans with a profile
+
+Profiles allow you to control your spring application in different run time environments
+
+The spring container using the inversion of control  now is going to have the capability
+of a profile. The spring container is going to wire you application differently depending on the
+active profile.
+
+Now add a new  controller I18nController.java
+the I18n is a common abbreviation for internationalization.
+    I-internationalization.
+    18n-18 characters long.
+
+This controller is going to return 2 different languages depending on which profile
+is active
+
+Create the services I18nEnglishGreetingService.java and the I18NSpanishService
+
+when the I18nController.java controller runs spring is not going to know which service
+to use the english or spanish.
+
+We need to annotate each service
+    @Profile("ES")
+    @Profile("EN")
+
+set the active profile in the resources/application.properties file
+
+    spring.profiles.active=ES
