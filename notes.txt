@@ -1,0 +1,2 @@
+you can have multiple profiles active and is case-sensitive.
+    spring.profiles.active=cat,EN
