@@ -1,0 +1,52 @@
+This covers section 5 lectures 70,71,72
+
+Lecture 70
+There are 4 configuration options
+--XML configuration.
+--Annotation based configuration(uses component scan).
+--Java based configuration.(uses a @configuration annotation for configuration classes )
+--Groovy base configuration DSL domain specific language.
+
+Lecture 71 spring stereotypes
+--There are 5 spring stereotypes
+
+--@Component: parent annotation that all the annotations below inherit form,  the annotated class
+    will be created as a bean.
+
+--@Controller: indicates that an annotated class has the role of a Spring MCV controller.
+
+--@RestController: it extends @Controller and adds @ResponseBody used for rest calls.
+
+--@Repository: indicates class is a repository
+
+--@Service: indicates the class is a Service
+
+When Spring starts it does a component scan, and it picks up any class annotated with a stereotype.
+
+When a spring boot application starts the auto configuration will tell spring to perform a component scan of the
+package of the main class. This will incudle all sub packages of the main class package.
+
+    com.mypackage
+        controllers
+        services
+        main.java
+In spring boot if a class is outside the main package tree you will need to declare the package scan.
+
+    com.myotherpackage
+        myOtherClass.java(must declare package scan to be pick up in the component scan.)
+    com.mypackage
+            controllers
+            services
+            main.java
+
+Lecture 72 Component Scan
+
+After moving the CatPetService, DogPetService, and PetService to the com.springframework.pets package
+you must  add the following to the main class SfgDiApplication.java
+
+    @ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pets"})
+    @SpringBootApplication
+    public class SfgDiApplication {}
+
+The  @ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pets"}) tells spring to
+scan the package "com.springframework.pets".
