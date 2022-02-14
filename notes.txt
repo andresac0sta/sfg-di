@@ -1,0 +1,28 @@
+lecture 73 Java configuration
+
+--So far we have been using annotations configurations but now we are going to use the java configuration.
+
+--Create the package guru.springframework.sfgdi.config
+--Create the GreetingServiceConfig.java class
+--Add the @Configuration annotation which tells spring to look in this configuration class
+    @Configuration
+    public class GreetingServiceConfig {
+
+    }
+
+--To use it remove the @Service annotation from ConstructorGreetingService.java
+--Now create the bean in the GreetingServiceConfig.java class
+
+    @Configuration
+    public class GreetingServiceConfig {
+
+    @Bean
+    ConstructorGreetingService constructorGreetingService(){
+        return new ConstructorGreetingService();
+    }
+
+--Use the above bean creation when working with 3 party libraries and you need to have your own configuration
+normally if you are working with your own classes use the spring stereotypes annotations.
+
+--By default the name of the bean is the name of the method used e.g. constructorGreetingService
+--You can use a qualifier to set up your own bean name.
