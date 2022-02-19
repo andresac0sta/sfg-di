@@ -1,0 +1,14 @@
+Before we were using the spring way of using configuration properties now we are going to
+use the spring boot way.
+Think of spring boot as a wrapper around spring.
+
+In spring boot the framework reads the application.properties automatically.
+
+for different profiles the naming convention is to do application-profile.properties
+
+    application-dev.properties
+    application-qa.properties
+
+There can only be one application-profile at any given time in the application.properties file
+
+    spring.profiles.active=dog,EN,qa
